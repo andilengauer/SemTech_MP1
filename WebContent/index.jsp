@@ -1,4 +1,14 @@
-<!DOCTYPE html>
+<%@page import="mp1.web.WebController"%>
+<%@page import="java.sql.Date"%>
+<%@page import="mp1.jena.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<% String restaurantsJson = WebController.getInstance().getRestaurants();
+%>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 
   <head>
@@ -23,7 +33,7 @@
   </head>
 
   <body>
-
+<input id="restaurants" type="hidden">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
@@ -69,7 +79,7 @@
 
         <div class="col-md-4">
           <h3 class="my-3">Project Description</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
+          <p id="demo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
           <h3 class="my-3">Project Details</h3>
           <ul>
             <li>Lorem Ipsum</li>
@@ -133,6 +143,27 @@
     <script src="script.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-aO02KDkhih5RPBBrc-Rn3Kn4goZx0oE&callback=initMap" async
     defer></script>
+    
+    <script type="text/javascript">
+
+var str = '<%=restaurantsJson %>';
+var restaurants = JSON.parse(str);
+document.getElementById("demo").innerHTML = restaurants[0].name
+
+for(var i=0; i < restaurants.length; i++)
+{
+	document.getElementById("restaurants").innerHTML = str;
+	var lng = restaurants[i]['long'];
+	var lat = restaurants[i].lat;
+	var name = restaurants[i].name;
+	//alert(lng)
+	var marker = {coords:{lat:42.8584,lng:-70.9300}, content:'<div id="content"></div>'};
+	
+	//addMarker(marker);
+	//alert('addmarker')
+}
+
+</script>
   </body>
 
 </html>

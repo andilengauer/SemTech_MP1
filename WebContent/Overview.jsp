@@ -22,7 +22,7 @@
 
 var str = '<%=restaurantsJson %>';
 var restaurants = JSON.parse(str);
-document.getElementById("demo").innerHTML = restaurants[0].name
+document.getElementById("demo").innerHTML = restaurants[0].long
 </script>
 </body>
 </html>

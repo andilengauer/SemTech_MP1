@@ -79,10 +79,11 @@ function initMap() {
     ];
 
     // Loop through markers
+    /*
     for (var i = 0; i < markers.length; i++) {
       // Add marker
       addMarker(markers[i]);
-    }
+    }*/
 
     // Add Marker Function
     function addMarker(props) {
