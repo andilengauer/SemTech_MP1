@@ -59,4 +59,7 @@ public class DataManager {
 		return arr.toJSONString();
 		
 	}
+	public void insertRestaurant(Restaurant r) {
+		database.addRestaurant(r);
+	}
 }

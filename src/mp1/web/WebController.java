@@ -31,5 +31,15 @@ public class WebController {
 	{
 		return datamanger.getRestaurantsAsJson();
 	}
+	
+	public void insertRestaurant(String name, String lng, String lat)
+	{
+		Restaurant r = new Restaurant();
+		r.setName(name);
+		r.setLongitude(Float.parseFloat(lng));
+		r.setLatitude(Float.parseFloat(lat));
+		
+		datamanger.insertRestaurant(r);
+	}
 
 }

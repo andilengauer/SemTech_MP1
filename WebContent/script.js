@@ -6,10 +6,10 @@ function initMap() {
 
     // Map options
     var options = {
-      zoom: 8,
+      zoom: 6,
       center: {
-        lat: 42.3601,
-        lng: -71.0589
+        lat: 51.5,
+        lng: -0.10589
       }
     }
 
@@ -40,7 +40,24 @@ function initMap() {
       infoWindow.open(map, marker);
     });
     */
-
+    //alert('init')
+    var str = document.getElementById("restaurants").value;
+    //alert(str)
+    var restaurants = JSON.parse(str)
+    //alert(restaurants[0].name)
+    
+    for(var i=0; i < restaurants.length; i++)
+    {
+    	var lng = restaurants[i]['long'];
+    	var lat = restaurants[i].lat;
+    	var name = restaurants[i].name;
+    	//alert(lng)
+    	var marker = {coords:{lat:lat,lng:lng}, content:name};
+	
+    	addMarker(marker);
+    	//alert('addmarker')
+    }
+    
     // Array of markers
     var markers = [
       {

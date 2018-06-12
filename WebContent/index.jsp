@@ -90,6 +90,10 @@
         </div>
 
       </div>
+      <div class="row">
+      <a href="AddRestaurant.jsp" class="button">Restaurant hinzufügen</a>
+      
+      </div>
       <!-- /.row -->
 
       <!-- Related Projects Row -->
@@ -134,7 +138,27 @@
       </div>
       <!-- /.container -->
     </footer>
+<script type="text/javascript">
 
+var str = '<%=restaurantsJson %>';
+var restaurants = JSON.parse(str);
+document.getElementById("demo").innerHTML = restaurants[0].name
+document.getElementById("restaurants").value = str;
+
+/*
+for(var i=0; i < restaurants.length; i++)
+{
+	var lng = restaurants[i]['long'];
+	var lat = restaurants[i].lat;
+	var name = restaurants[i].name;
+	//alert(lng)
+	var marker = {coords:{lat:42.8584,lng:-70.9300}, content:'<div id="content"></div>'};
+	
+	//addMarker(marker);
+	//alert('addmarker')
+}*/
+
+</script>
     <!-- Bootstrap core JavaScript -->
     <!-- <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
@@ -144,26 +168,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-aO02KDkhih5RPBBrc-Rn3Kn4goZx0oE&callback=initMap" async
     defer></script>
     
-    <script type="text/javascript">
-
-var str = '<%=restaurantsJson %>';
-var restaurants = JSON.parse(str);
-document.getElementById("demo").innerHTML = restaurants[0].name
-
-for(var i=0; i < restaurants.length; i++)
-{
-	document.getElementById("restaurants").innerHTML = str;
-	var lng = restaurants[i]['long'];
-	var lat = restaurants[i].lat;
-	var name = restaurants[i].name;
-	//alert(lng)
-	var marker = {coords:{lat:42.8584,lng:-70.9300}, content:'<div id="content"></div>'};
-	
-	//addMarker(marker);
-	//alert('addmarker')
-}
-
-</script>
+    
   </body>
 
 </html>
