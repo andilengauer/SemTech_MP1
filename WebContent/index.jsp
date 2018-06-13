@@ -78,21 +78,22 @@
         </div>
 
         <div class="col-md-4">
-          <h3 class="my-3">Project Description</h3>
-          <p id="demo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-          <h3 class="my-3">Project Details</h3>
+          <h3 class="my-3">Projektbeschreibung</h3>
+          <p id="demo">Abfrage von Restaurants in DBPedia und Darstellung auf einer Map.</p>
+          <h3 class="my-3">Details</h3>
           <ul>
-            <li>Lorem Ipsum</li>
-            <li>Dolor Sit Amet</li>
-            <li>Consectetur</li>
-            <li>Adipiscing Elit</li>
+            <li>DBPedia Abfrage</li>
+            <li>Jena und SPARQL</li>
+            <li>JSP Web Applikation</li>
+            <li>Javascript und CSS für Clientdarstellung</li>
           </ul>
         </div>
 
       </div>
       <div class="row">
+      <div class="col-md-8">
       <a href="AddRestaurant.jsp" class="button">Restaurant hinzufügen</a>
-      
+      </div>
       </div>
       <!-- /.row -->
 
@@ -141,8 +142,6 @@
 <script type="text/javascript">
 
 var str = '<%=restaurantsJson %>';
-var restaurants = JSON.parse(str);
-document.getElementById("demo").innerHTML = restaurants[0].name
 document.getElementById("restaurants").value = str;
 
 /*

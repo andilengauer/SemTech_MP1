@@ -1,5 +1,6 @@
 window.onload = function () {
-    initMap();
+    //alert("onload");
+	initMap();
 }
 
 function initMap() {
@@ -51,8 +52,36 @@ function initMap() {
     	var lng = restaurants[i]['long'];
     	var lat = restaurants[i].lat;
     	var name = restaurants[i].name;
-    	//alert(lng)
-    	var marker = {coords:{lat:lat,lng:lng}, content:name};
+    	var rating = restaurants[i].rating;
+    	var content = '<div id="content"><h1>' + name +
+    				'</h1><p>Bewertung: ' + rating + 
+    				'<form action="RateServlet" method="post">' +
+    				'<input type="radio" name="rating" value="1" checked> 1&nbsp;' +
+    				  '<input type="radio" name="rating" value="2"> 2&nbsp;' +
+    				  '<input type="radio" name="rating" value="3"> 3&nbsp;' +
+    				  '<input type="radio" name="rating" value="4"> 4&nbsp; ' +
+    				  '<input type="radio" name="rating" value="5"> 5&nbsp; ' +
+    				  '<input type="hidden" name="name" value="'+name +'">' +
+    				  
+    				  '<input type="submit" value="Bewerten">' +
+    				
+    				'</form>'+
+    				'<p><p><a href="EditRestaurant.jsp?restaurant='+name+'">Restaurant bearbeiten</a>&nbsp;'+
+    				'<a href="DeleteServlet?restaurant='+name+'" style="margin-left: 40px">Restaurant löschen</a></div>';
+    	
+    	
+    	/*
+    	content = '<div id="content">'+
+        '<div id="siteNotice">'+
+        '</div>'+
+        '<h1 id="name" class="name">Name of restaurant</h1>'+
+        '<div id="content">'+
+        '<p><b>Name of Restaurant</b>, DESCRIPTION ' + 'text ...' +
+        '<p>Link to restaurant, <a href="https://de.wikipedia.org/wiki/Restaurant">https://de.wikipedia.org/wiki/Restaurant</a> '+
+        '</div>'+
+        '</div>';
+    	//alert(content);*/
+    	var marker = {coords:{lat:lat,lng:lng}, content:content};
 	
     	addMarker(marker);
     	//alert('addmarker')

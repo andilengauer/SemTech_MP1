@@ -53,6 +53,8 @@ public class DataManager {
 			jsonObj.put("country", r.getCountry());
 			jsonObj.put("long", r.getLongitude());
 			jsonObj.put("lat", r.getLatitude());
+			int rating = r.getRating();
+			jsonObj.put("rating",rating == 0 ? "keine":rating);
 			arr.add(jsonObj);
 		}
 		
@@ -61,5 +63,33 @@ public class DataManager {
 	}
 	public void insertRestaurant(Restaurant r) {
 		database.addRestaurant(r);
+	}
+	public void rateRestaurant(String restaurant, int rating) {
+		Restaurant r = getRestaurant(restaurant);
+		
+		r.setRating(rating);
+		database.insertRating(r);
+		
+	}
+	public Restaurant getRestaurant(String restaurant) {
+		List<Restaurant> restaurants = getRestaurants();
+		
+		for(Restaurant r : restaurants)
+		{
+			if(r.getName().equalsIgnoreCase(restaurant))
+			{
+				return r;
+			}
+		}
+		return null;
+	}
+	public void deleteRestaurant(String name) {
+		Restaurant r = new Restaurant();
+		r.setName(name);
+		database.deleteRestaurant(r);
+	}
+	public void editRestaurant(Restaurant old, Restaurant r) {
+		r.setRating(old.getRating());
+		database.editRestaurant(old, r);
 	}
 }
